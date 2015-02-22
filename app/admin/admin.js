@@ -1,5 +1,7 @@
 (function adminModule (angular) {
 
+'use strict'
+
 var app = angular.module('tangeloAdmin', ['demoServices']);
 
 app.controller('AdminHomeController', ['$scope','globalCounterService',function($scope, globalCounterService){
