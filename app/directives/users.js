@@ -15,15 +15,17 @@
 	}]);
 
 
-	app.directive('userForm', ['userService', function userForm (userService) {
+	app.directive('userForm', ['userService', '$location', function userForm (userService, $location) {
 		return {
 			restrict: 'A', 
 			link: function($scope, iElm, iAttrs, controller) {
+				var hasSubmit = false;
 				$scope.user = {};
-
 				$scope.submit = function submitUserForm () {
-					console.log($scope.user);
+					if(hasSubmit) return;
+					hasSubmit = true; 
 					userService.add($scope.user);
+					$location.path('/users');
 				}
 			}
 		}

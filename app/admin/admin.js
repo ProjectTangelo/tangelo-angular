@@ -19,7 +19,6 @@ app.controller('AdminHomeController', ['$scope','globalCounterService',function(
 
 app.controller('AdminUserController', ['$scope', 'userService', function($scope, userService){
 	$scope.users = userService;
-
 }])
 
 
