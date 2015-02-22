@@ -8,17 +8,20 @@
 				'fname' : 'David', 
 				'lname' : 'Nuon', 
 				'email' : 'david@davidnuon.com',
+				'username' : 'davidnuon',
 				'type' : 'User'
 			},
 			{
 				'fname' : 'Tyler', 
 				'lname' : 'Goodman', 
+				'username' : 'davidnuon',
 				'email' : 'david@davidnuon.com',
 				'type' : 'User'
 			},
 			{
 				'fname' : 'Tifanny', 
 				'lname' : 'G', 
+				'username' : 'davidnuon',
 				'email' : 'david@davidnuon.com',
 				'type' : 'User'
 			}	
@@ -26,13 +29,13 @@
 
 	
 		return  {
-			get : function getNodes () {
+			get : function getUsers () {
 				return users; 
 			},
 
-			add : function addNode (node) {
-				if(node) {
-					users.push(node);
+			add : function addUser (user) {
+				if(user) {
+					users.push(user);
 				}
 			}, 
 

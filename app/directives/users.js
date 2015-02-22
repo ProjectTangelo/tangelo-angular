@@ -13,4 +13,19 @@
 			}
 		};
 	}]);
+
+
+	app.directive('userForm', ['userService', function userForm (userService) {
+		return {
+			restrict: 'A', 
+			link: function($scope, iElm, iAttrs, controller) {
+				$scope.user = {};
+
+				$scope.submit = function submitUserForm () {
+					console.log($scope.user);
+					userService.add($scope.user);
+				}
+			}
+		}
+	}])
 })(angular);
