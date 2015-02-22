@@ -1,4 +1,4 @@
-var app = angular.module('acmlan', ['ngRoute', 'tangeloAdmin', 'contentDirectives']);
+var app = angular.module('acmlan', ['ngRoute', 'tangeloAdmin']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
@@ -9,7 +9,7 @@ app.config(['$routeProvider',
       }).
       when('/users', {
         templateUrl: 'app/partials/users.html',
-        controller: 'AdminHomeController'
+        controller: 'AdminUserController'
       }).
       when('/servers', {
         templateUrl: 'app/partials/servers.html',
