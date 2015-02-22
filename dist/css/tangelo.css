@@ -1,0 +1,10 @@
+.file-import-box {
+	margin:20px;
+	border:4px dashed #ddd;
+	border-radius:10px;
+	height:250px;
+}
+
+.file-import-box:hover {
+	border:4px solid #ddd;
+}

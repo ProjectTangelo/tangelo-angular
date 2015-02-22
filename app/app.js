@@ -15,6 +15,10 @@ app.config(['$routeProvider',
         templateUrl: 'app/partials/users-add.html',
         controller: 'AdminUserController'
       }).      
+      when('/users/import', {
+        templateUrl: 'app/partials/users-import.html',
+        controller: 'AdminUserController'
+      }).      
       when('/servers', {
         templateUrl: 'app/partials/servers.html',
         controller: 'AdminHomeController'
