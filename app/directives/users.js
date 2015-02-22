@@ -15,7 +15,8 @@
 		};
 	}]);
 
-	app.directive('userImport', ['userService', function userCSVImport (argument) {
+	app.directive('userImport', ['userService', '$location', function userCSVImport (userService, $location) {
+		var importedUsers = [];
 		return {
 			scope: {}, 
 		 	templateUrl: 'app/tmpl/users-csv-import.html',
@@ -23,31 +24,52 @@
 			replace: true,
 			link: function($scope, iElm, iAttrs, controller) {
 				$scope.imported = false;
- 
-			var holder = $(iElm)[0];
+				$scope.users = [];
+				var holder = $(iElm)[0];
 
-			holder.ondragover = function () {  alert(2); this.className = 'hover'; return false; };
-			holder.ondragend = function () { this.className = ''; return false; };
-			holder.ondrop = function (e) {
-			  this.className = '';
-			  e.preventDefault();
+				holder.ondragover = function () {  
+					 return false; };
+				holder.ondragend = function () { return false; };
+ 				holder.ondrop = function (e) {
+  			  		e.preventDefault();
+					  var file = e.dataTransfer.files[0], reader = new FileReader();
+					  reader.onload = function (event) {
+					    var content = event.target
+					    var data = content.result;
 
-			  var file = e.dataTransfer.files[0], reader = new FileReader();
-			  reader.onload = function (event) {
-			    console.log(event.target);
-			    holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+					    // Robust CSV Parser right here y'all
+					    var parseUsers = atob(data.split(",")[1]).trim().split("\n").map(function (e) {
+					    	var row = e.split(',');
+					    	return {
+					    		'fname' : row[0],
+					    		'lname' : row[1],
+					    		'username' : row[2],
+					    		'email' : row[3],
+					    		'type': 'User'
+					    	}
+					    });
+					    
+					    importedUsers = parseUsers;
+					    $scope.users = parseUsers;
+					    $scope.imported = true;
+					    $scope.$apply();
 			  };
-			  console.log(file);
-			  reader.readAsDataURL(file);
 
+			  reader.readAsDataURL(file);
 			  return false;
 			}
 
-			console.log(holder);
-
+			var submitted = false;
+			$scope.importUsers = function importUsers () {
+				if(submitted) return;
+				submitted = true; 
+				userService.import(importedUsers);
+				$location.path('/users');
 			}
-		};
-	}])
+
+		}
+	};
+}]);
 
 
 	app.directive('userForm', ['userService', '$location', function userForm (userService, $location) {
