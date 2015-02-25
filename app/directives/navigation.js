@@ -1,7 +1,7 @@
 
 // Directive for a sidebars
 app.directive('acmSidebar', [function(){
-  // Recurse through a menu list and render a sidebar   
+  // Recurse through a menu list and render a sidebar
   function render_menu(menu, root) {
     for(var idx in menu) {
       var item = menu[idx];
@@ -12,7 +12,7 @@ app.directive('acmSidebar', [function(){
         'header' : function header_template(item) {
           var label = item.title;
           return '<li class="header">' + label +'</li>';
-        }, 
+        },
 
         'item' : function item_template (item) {
           var label = item.title;
@@ -34,7 +34,7 @@ app.directive('acmSidebar', [function(){
 
   return {
     restrict: 'E',
-    templateUrl: 'app/tmpl/sidebar.html',
+    templateUrl: 'tangelo-angular/app/tmpl/sidebar.html',
     replace: true,
     link: function($scope, iElm, iAttrs, controller) {
       var $menuRoot = jQuery(iElm).find('.sidebar-menu');

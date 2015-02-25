@@ -5,10 +5,10 @@
 	app.directive('userList', ['userService', function(userService){
 		// Runs during compile
 		return {
-			scope: {}, 
-		 	templateUrl: 'app/tmpl/user-list.html',
+			scope: {},
+		 	templateUrl: 'tangelo-angular/app/tmpl/user-list.html',
 			restrict: 'E',
-			repalce: true, 
+			repalce: true,
 			link: function($scope, iElm, iAttrs, controller) {
 				$scope.users = userService.get();
 			}
@@ -18,16 +18,16 @@
 	app.directive('userImport', ['userService', '$location', function userCSVImport (userService, $location) {
 		var importedUsers = [];
 		return {
-			scope: {}, 
-		 	templateUrl: 'app/tmpl/users-csv-import.html',
-			restrict: 'E', 
+			scope: {},
+		 	templateUrl: 'tangelo-angular/app/tmpl/users-csv-import.html',
+			restrict: 'E',
 			replace: true,
 			link: function($scope, iElm, iAttrs, controller) {
 				$scope.imported = false;
 				$scope.users = [];
 				var holder = $(iElm)[0];
 
-				holder.ondragover = function () {  
+				holder.ondragover = function () {
 					 return false; };
 				holder.ondragend = function () { return false; };
  				holder.ondrop = function (e) {
@@ -48,7 +48,7 @@
 					    		'type': 'User'
 					    	}
 					    });
-					    
+
 					    importedUsers = parseUsers;
 					    $scope.users = parseUsers;
 					    $scope.imported = true;
@@ -62,7 +62,7 @@
 			var submitted = false;
 			$scope.importUsers = function importUsers () {
 				if(submitted) return;
-				submitted = true; 
+				submitted = true;
 				userService.import(importedUsers);
 				$location.path('/users');
 			}
@@ -74,13 +74,13 @@
 
 	app.directive('userForm', ['userService', '$location', function userForm (userService, $location) {
 		return {
-			restrict: 'A', 
+			restrict: 'A',
 			link: function($scope, iElm, iAttrs, controller) {
 				var hasSubmit = false;
 				$scope.user = {};
 				$scope.submit = function submitUserForm () {
 					if(hasSubmit) return;
-					hasSubmit = true; 
+					hasSubmit = true;
 					userService.add($scope.user);
 					$location.path('/users');
 				}

@@ -4,33 +4,33 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: 'app/partials/home.html',
+        templateUrl: 'tangelo-angular/app/partials/home.html',
         controller: 'AdminHomeController'
       }).
       when('/users', {
-        templateUrl: 'app/partials/users.html',
+        templateUrl: 'tangelo-angular/app/partials/users.html',
         controller: 'AdminUserController'
       }).
       when('/users/add', {
-        templateUrl: 'app/partials/users-add.html',
+        templateUrl: 'tangelo-angular/app/partials/users-add.html',
         controller: 'AdminUserController'
-      }).      
+      }).
       when('/users/import', {
-        templateUrl: 'app/partials/users-import.html',
+        templateUrl: 'tangelo-angular/app/partials/users-import.html',
         controller: 'AdminUserController'
-      }).      
+      }).
       when('/servers', {
-        templateUrl: 'app/partials/servers.html',
+        templateUrl: 'tangelo-angular/app/partials/servers.html',
         controller: 'AdminHomeController'
       }).
       when('/lessons', {
-        templateUrl: 'app/partials/lessons.html',
+        templateUrl: 'tangelo-angular/app/partials/lessons.html',
         controller: 'AdminHomeController'
       }).
       otherwise({
         redirectTo: '/home'
       });
-  }]);  
+  }]);
 
 
 

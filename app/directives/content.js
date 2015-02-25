@@ -6,9 +6,9 @@
   app.directive('contentBox',[function(){
   // Runs during compile
   return {
-    scope: {}, 
+    scope: {},
     replace: true,
-    templateUrl: 'app/tmpl/solid-box.html',
+    templateUrl: 'tangelo-angular/app/tmpl/solid-box.html',
     restrict: 'E',
     transclude: true,
     link: function($scope, iElm, iAttrs, controller) {
@@ -21,9 +21,9 @@
   app.directive('statusBlock', [function(){
   // Runs during compile
   return {
-    scope: {}, 
+    scope: {},
     restrict: 'E',
-    templateUrl: 'app/tmpl/status-block.html',
+    templateUrl: 'tangelo-angular/app/tmpl/status-block.html',
     replace: true,
     link: function($scope, iElm, iAttrs, controller) {
       $scope.name =  iAttrs.name;
@@ -39,7 +39,7 @@
   return {
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     replace: true,
-    templateUrl: 'app/tmpl/number-block.html',
+    templateUrl: 'tangelo-angular/app/tmpl/number-block.html',
     scope: {},
     transclude: true,
 
