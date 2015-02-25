@@ -2,7 +2,7 @@
 	'use strict'
 
 	var app = angular.module('tangeloUserServices', []);
-	app.service('userService', [function(){
+	app.service('userService', ['$http', function($http){
 		var users = [
 			{
 				'fname' : 'David', 
@@ -30,7 +30,8 @@
 	
 		return  {
 			get : function getUsers () {
-				return users; 
+				var url = '/users';
+				return $http.get(url);
 			},
 
 			import : function importUsers (userlist) {
@@ -41,8 +42,11 @@
 			},
 
 			add : function addUser (user) {
+				var url = '/users';
+				user.password_confirmed = user.password;
+				url = url + '?' + jQuery.param(user);
 				if(user) {
-					users.push(user);
+				 return $http.post(url)
 				}
 			}, 
 

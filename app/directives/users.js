@@ -10,7 +10,10 @@
       restrict: 'E',
       repalce: true,
       link: function($scope, iElm, iAttrs, controller) {
-        $scope.users = userService.get();
+         userService.get().then(function(d) {
+		$scope.users = d.data;
+		console.log(d.data);
+	});
       }
     };
   }]);
@@ -81,8 +84,10 @@
         $scope.submit = function submitUserForm () {
           if(hasSubmit) return;
           hasSubmit = true;
-          userService.add($scope.user);
-          $location.path('/users');
+	  $scope.user.isAdmin = $scope.user.isAdmin.value;
+          userService.add($scope.user).then(function(d){
+		$location.path('/users');
+	  });
         }
       }
     }
