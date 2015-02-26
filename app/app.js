@@ -27,6 +27,10 @@ app.config(['$routeProvider',
         templateUrl: 'tangelo-angular/app/partials/lessons.html',
         controller: 'AdminHomeController'
       }).
+      when('/users/update', {
+        templateUrl: 'tangelo-angular/app/partials/users-update.html',
+        controller: 'AdminUserController'
+      }).
       otherwise({
         redirectTo: '/home'
       });

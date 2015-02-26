@@ -10,10 +10,7 @@
       restrict: 'E',
       repalce: true,
       link: function($scope, iElm, iAttrs, controller) {
-         userService.get().then(function(d) {
-		$scope.users = d.data;
-		console.log(d.data);
-	});
+        $scope.users = userService.get();
       }
     };
   }]);
@@ -84,12 +81,27 @@
         $scope.submit = function submitUserForm () {
           if(hasSubmit) return;
           hasSubmit = true;
-	  $scope.user.isAdmin = $scope.user.isAdmin.value;
-          userService.add($scope.user).then(function(d){
-		$location.path('/users');
-	  });
+          userService.add($scope.user);
+          $location.path('/users');
         }
       }
     }
   }])
+
+  app.directive('userUpdate', ['userService', '$location', function userForm (userService, $location) {
+    return {
+      restrict: 'A',
+      link: function($scope, iElm, iAttrs, controller) {
+        var hasSubmit = false;
+        $scope.user = {};
+        $scope.submit = function submitUserForm () {
+          if(hasSubmit) return;
+          hasSubmit = true;
+          userService.update($scope.user);
+          $location.path('/users');
+        }
+      }
+    }
+  }])
+
 })(angular);

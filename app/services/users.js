@@ -5,29 +5,29 @@
 	app.service('userService', ['$http', function($http){
 		var users = [
 			{
-				'fname' : 'David', 
-				'lname' : 'Nuon', 
+				'fname' : 'David',
+				'lname' : 'Nuon',
 				'email' : 'david@davidnuon.com',
 				'username' : 'davidnuon',
 				'type' : 'User'
 			},
 			{
-				'fname' : 'Tyler', 
-				'lname' : 'Goodman', 
+				'fname' : 'Tyler',
+				'lname' : 'Goodman',
 				'username' : 'davidnuon',
 				'email' : 'david@davidnuon.com',
 				'type' : 'User'
 			},
 			{
-				'fname' : 'Tifanny', 
-				'lname' : 'G', 
+				'fname' : 'Tifanny',
+				'lname' : 'G',
 				'username' : 'davidnuon',
 				'email' : 'david@davidnuon.com',
 				'type' : 'User'
-			}	
+			}
 		];
 
-	
+
 		return  {
 			get : function getUsers () {
 				var url = '/users';
@@ -48,7 +48,16 @@
 				if(user) {
 				 return $http.post(url)
 				}
-			}, 
+			},
+
+			update: function updateUser (user) {
+				var url = '/users';
+				user.password_confirmed = user.password;
+				url = url + '?' + jQuery.param(user);
+				if(user) {
+					return $http.put(url)
+				}
+			},
 
 			getNodeById: function getNodeById (id) {
 				if(id in users) {
