@@ -3,6 +3,7 @@
 
 	var app = angular.module('tangeloUserServices', []);
 	app.service('userService', ['$http', function($http){
+		var toEdit = null;
 		var users = [
 			{
 				'fname' : 'David',
@@ -50,9 +51,24 @@
 				}
 			},
 
-			update: function updateUser (user) {
+			invokeEdit: function invokeEdit(user) {
+				toEdit = user;
+			},  
+
+			getToEdit: function getInvokeEdit() {
+				var out = toEdit;
+				console.log(out);
+				toEdit = null;
+				return out;
+			},
+	
+			update: function updateUser (_user) {
+				var user = Object.create(_user);
+				delete user.password;
 				var url = '/users';
-				user.password_confirmed = user.password;
+				
+				console.log('god dammit typer', user);
+				user.id = user._id
 				url = url + '?' + jQuery.param(user);
 				if(user) {
 					return $http.put(url)

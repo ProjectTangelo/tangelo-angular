@@ -2,7 +2,7 @@
   'use strict'
 
   var app = angular.module('userDirectives', ['tangeloUserServices']);
-  app.directive('userList', ['userService', function(userService){
+  app.directive('userList', ['userService', '$location', function(userService, $location){
     // Runs during compile
     return {
       scope: {},
@@ -10,7 +10,15 @@
       restrict: 'E',
       repalce: true,
       link: function($scope, iElm, iAttrs, controller) {
-        $scope.users = userService.get();
+	$scope.invokeEdit = function startEdit(user) {
+		userService.invokeEdit(user);
+		$location.path('/users/update');
+	}
+
+        userService.get().then(function(d) {
+		$scope.users =	d.data;
+		console.log(d);
+	});
       }
     };
   }]);
@@ -93,12 +101,16 @@
       restrict: 'A',
       link: function($scope, iElm, iAttrs, controller) {
         var hasSubmit = false;
-        $scope.user = {};
+        $scope.user = userService.getToEdit();
+
+	console.log($scope.user);
         $scope.submit = function submitUserForm () {
           if(hasSubmit) return;
           hasSubmit = true;
-          userService.update($scope.user);
-          $location.path('/users');
+          userService.update($scope.user).then(function(d) {
+          console.log(d);
+		$location.path('/users');
+});
         }
       }
     }
