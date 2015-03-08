@@ -6,7 +6,7 @@
     // Runs during compile
     return {
       scope: {},
-      templateUrl: 'tangelo-angular/app/tmpl/user-list.html',
+      templateUrl: 'app/tmpl/user-list.html',
       restrict: 'E',
       repalce: true,
       link: function($scope, iElm, iAttrs, controller) {
@@ -27,7 +27,7 @@
     var importedUsers = [];
     return {
       scope: {},
-      templateUrl: 'tangelo-angular/app/tmpl/users-csv-import.html',
+      templateUrl: 'app/tmpl/users-csv-import.html',
       restrict: 'E',
       replace: true,
       link: function($scope, iElm, iAttrs, controller) {

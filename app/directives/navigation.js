@@ -34,7 +34,7 @@ app.directive('acmSidebar', [function(){
 
   return {
     restrict: 'E',
-    templateUrl: 'tangelo-angular/app/tmpl/sidebar.html',
+    templateUrl: 'app/tmpl/sidebar.html',
     replace: true,
     link: function($scope, iElm, iAttrs, controller) {
       var $menuRoot = jQuery(iElm).find('.sidebar-menu');

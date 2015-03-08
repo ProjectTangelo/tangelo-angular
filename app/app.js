@@ -4,31 +4,31 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: 'tangelo-angular/app/partials/home.html',
+        templateUrl: 'app/partials/home.html',
         controller: 'AdminHomeController'
       }).
       when('/users', {
-        templateUrl: 'tangelo-angular/app/partials/users.html',
+        templateUrl: 'app/partials/users.html',
         controller: 'AdminUserController'
       }).
       when('/users/add', {
-        templateUrl: 'tangelo-angular/app/partials/users-add.html',
+        templateUrl: 'app/partials/users-add.html',
         controller: 'AdminUserController'
       }).
       when('/users/import', {
-        templateUrl: 'tangelo-angular/app/partials/users-import.html',
+        templateUrl: 'app/partials/users-import.html',
         controller: 'AdminUserController'
       }).
       when('/servers', {
-        templateUrl: 'tangelo-angular/app/partials/servers.html',
+        templateUrl: 'app/partials/servers.html',
         controller: 'AdminHomeController'
       }).
       when('/lessons', {
-        templateUrl: 'tangelo-angular/app/partials/lessons.html',
+        templateUrl: 'app/partials/lessons.html',
         controller: 'AdminHomeController'
       }).
       when('/users/update', {
-        templateUrl: 'tangelo-angular/app/partials/users-update.html',
+        templateUrl: 'app/partials/users-update.html',
         controller: 'AdminUserController'
       }).
       otherwise({

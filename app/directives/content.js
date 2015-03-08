@@ -8,7 +8,7 @@
   return {
     scope: {},
     replace: true,
-    templateUrl: 'tangelo-angular/app/tmpl/solid-box.html',
+    templateUrl: 'app/tmpl/solid-box.html',
     restrict: 'E',
     transclude: true,
     link: function($scope, iElm, iAttrs, controller) {
@@ -23,7 +23,7 @@
   return {
     scope: {},
     restrict: 'E',
-    templateUrl: 'tangelo-angular/app/tmpl/status-block.html',
+    templateUrl: 'app/tmpl/status-block.html',
     replace: true,
     link: function($scope, iElm, iAttrs, controller) {
       $scope.name =  iAttrs.name;
@@ -39,7 +39,7 @@
   return {
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     replace: true,
-    templateUrl: 'tangelo-angular/app/tmpl/number-block.html',
+    templateUrl: 'app/tmpl/number-block.html',
     scope: {},
     transclude: true,
 
