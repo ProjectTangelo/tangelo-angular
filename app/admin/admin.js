@@ -2,8 +2,8 @@
 
 'use strict'
 
-var app = angular.module('tangeloAdmin', 
-	['demoServices', 'tangeloNodeServices', 'tangeloUserServices', 
+var app = angular.module('tangeloAdmin',
+	['demoServices', 'tangeloNodeServices', 'tangeloUserServices',
 	 'userDirectives', 'contentDirectives']);
 
 app.controller('AdminHomeController', ['$scope','globalCounterService',function($scope, globalCounterService){
@@ -23,5 +23,3 @@ app.controller('AdminUserController', ['$scope', 'userService', function($scope,
 
 
 })(angular);
-
-
