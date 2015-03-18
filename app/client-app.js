@@ -5,19 +5,19 @@ app.config(['$routeProvider',
     $routeProvider.
       when('/home', {
         templateUrl: 'app/client-partials/home.html',
-        controller: 'AdminHomeController'
+        controller: 'ClientHomeController'
       }).
       when('/profile', {
         templateUrl: 'app/client-partials/profile.html',
-        controller: 'AdminHomeController'
+        controller: 'ClientHomeController'
       }).
       when('/scratch', {
         templateUrl: 'app/client-partials/scratch.html',
-        controller: 'AdminHomeController'
+        controller: 'ClientHomeController'
       }).
       when('/lesson', {
         templateUrl: 'app/client-partials/lesson.html',
-        controller: 'AdminHomeController'
+        controller: 'ClientHomeController'
       }).
       otherwise({
         redirectTo: '/home'
