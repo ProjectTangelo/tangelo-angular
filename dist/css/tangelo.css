@@ -8,3 +8,21 @@
 .file-import-box:hover {
 	border:4px solid #ddd;
 }
+
+.full-bleed {
+	position: absolute;
+	top:50px;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.right-panel {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 350px;
+	top:50px;
+	z-index: 50;
+	background: #fff;
+}
