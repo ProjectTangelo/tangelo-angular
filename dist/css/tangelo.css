@@ -26,3 +26,28 @@
 	z-index: 50;
 	background: #fff;
 }
+
+.right-panel-content {
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom: 35px;
+	overflow: auto;
+}
+
+
+.lowerbar-ui {
+	background: #ddd;
+	height:35px;
+	margin: 0 !important;
+	position: absolute;
+	bottom: 0;
+	right:0;
+	left:0;
+}
+
+.lowerbar-ui a {
+	color:#333;
+	cursor: pointer;
+}
