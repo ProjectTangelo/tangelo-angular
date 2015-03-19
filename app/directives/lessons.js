@@ -11,13 +11,25 @@
 				$scope.lesson = {};
 
 				$scope.submit = function submitLessonForm() {
-					if( hasSubmit ) return;
+					// if( hasSubmit ) return;
 					hasSubmit = true;
 
 					// Load the file
 					$scope.lesson.file = iElem.find('#fileUpload').get(0).files[0];
 					$scope.lesson.size = $scope.lesson.file.size;
-					lessonService.create( $scope.lesson );
+
+					var reader = new FileReader();
+					reader.onloadend = function() {
+						$scope.lesson.content = reader.result;
+						console.log('Result: ' + $scope.lesson.content);
+						console.log('Result: ' + window.btoa($scope.lesson.content));
+						lessonService.create( $scope.lesson );
+					};
+
+					reader.readAsBinaryString( $scope.lesson.file );
+
+					// console.log($scope.lesson.file);
+
 
 					// $location.path('/lessons/');
 					// console.log( $scope.lesson );
