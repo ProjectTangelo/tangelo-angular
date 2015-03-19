@@ -27,6 +27,7 @@
 					};
 
 					reader.readAsBinaryString( $scope.lesson.file );
+					// reader.readAsText( $scope.lesson.file );
 
 					// console.log($scope.lesson.file);
 
@@ -36,5 +37,26 @@
 				}
 			}
 		}
-	}])
+	}]);
+
+	app.directive('lessonList', ['lessonService', '$location', '$http', function lessonList( lessonService, $location, $http ) {
+		return {
+			scope: {},
+			templateUrl: 'app/tmpl/lesson-list.html',
+			restrict: 'E',
+			replace: true,
+			link: function($scope, iElem, iAttrs, controller) {
+				
+				$http.get('/uploads?{}').success(function(data) {
+					$scope.files = data;
+					console.log('Scope Files: ' + $scope.files);
+				});
+				
+				// TODO: Set this up to view a single file and its data.
+				$scope.viewLesson = function viewLesson( file ) {
+					$location.path('/uploads');
+				};
+			}
+		};
+	}]);
 })(angular);
