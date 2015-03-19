@@ -25,7 +25,11 @@ app.config(['$routeProvider',
       }).
       when('/lessons', {
         templateUrl: 'app/partials/lessons.html',
-        controller: 'AdminHomeController'
+        controller: 'AdminLessonController'
+      }).
+      when('/lessons/add', {
+        templateUrl: 'app/partials/lessons-add.html',
+        controller: 'AdminLessonController'
       }).
       when('/users/update', {
         templateUrl: 'app/partials/users-update.html',

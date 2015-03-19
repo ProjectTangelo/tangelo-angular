@@ -1,0 +1,19 @@
+<form lesson-form>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Adding a Lesson</div>
+		<div class="panel-body">
+
+			<div class="form-group">
+				<label for="lessonName">Lesson Name</label>
+				<input ng-model="lesson.name" type="text" class="form-control" id="lessonName" placeholder="Enter Lesson Name">
+			</div>
+			
+			<div class="form-group">
+				<label for="fileUpload">Upload File</label>
+				<input ng-model="lesson.file" type="file" id="fileUpload">
+			</div>
+
+			<button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+		</div>
+	</div>
+</form>
