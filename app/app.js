@@ -28,7 +28,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).
     when('/lessons', {
       templateUrl: 'app/partials/lessons.html',
-      controller: 'AdminHomeController'
+      controller: 'AdminLessonController'
+    }).
+    when('/lessons/add', {
+      templateUrl: 'app/partials/lessons-add.html',
+      controller: 'AdminLessonController'
     }).
     otherwise({
       redirectTo: '/home'
