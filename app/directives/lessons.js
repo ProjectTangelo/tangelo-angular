@@ -20,9 +20,9 @@
 
 					var reader = new FileReader();
 					reader.onloadend = function() {
-						$scope.lesson.content = reader.result;
-						console.log('Result: ' + $scope.lesson.content);
-						console.log('Result: ' + window.btoa($scope.lesson.content));
+						$scope.lesson.content = window.btoa(reader.result);
+						// console.log('Result: ' + $scope.lesson.content);
+						// console.log('Result: ' + window.btoa($scope.lesson.content));
 						lessonService.create( $scope.lesson );
 					};
 
