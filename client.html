@@ -19,28 +19,54 @@
     <link href="dist/css/tangelo.css" rel="stylesheet" type="text/css" />
 
   </head>
-  <body ng-app="acmlan" class="skin-yellow">
+  <body ng-app="acmlan" class="skin-purple" style="overflow:hidden;" ng-controller="ClientMainController">
     <div class="wrapper">
       <!-- header logo: style can be found in header.less -->
-      <header class="main-header">
+      <header class="main-header" >
         <!-- Logo -->
-        <a href="/" class="logo"><strong>tan</strong>gelo</a>
+        <a href="#/" class="logo"><strong>tan</strong>gelo</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
+          <ul class="nav navbar-nav navbar-custom-menu">
+            <li><a ng-click="panelChange($event)" link="home">Info</a></li>
+            <li><a ng-click="panelChange($event)" link="scratch"> ScratchPad</a></li>
+            <li><a ng-click="panelChange($event)" link="profile">User Profile</a></li>
+            <li><a ng-click="panelChange($event)" link="lesson">Lesson Plan</a></li>
+          </ul>
         </nav>
       </header>
 
-      <acm-sidebar></acm-sidebar>
+      <div class="right-panel" ng-show="showPanel">
+        <div class="right-panel-content">
+          <div  style="padding:15px 5px;">
+            
+         <ng-view></ng-view>
+            
+          </div>
+        </div>
+        <div class="lowerbar-ui navbar navbar-static-top">
+          <ul class="nav navbar-nav navbar-custom-menu">
+            <li><a ng-click="showPanel = false">Close</a></li>
+          </ul>
+        </div>
+      </div>
 
       <!-- Right side column. Contains the navbar and content of the page -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="margin-left:0;">
         <!-- Content Header (Page header) -->
 
-        <section ng-view class="content">
+        <section class="full-bleed">
+
+<div style="position:absolute; right:0; top:0; left:0; bottom:0;">
+  <iframe 
+    src="/mock-shell.html"
+    width="100%"
+    height="100%" 
+    frameborder="0">
+  </iframe>
+</div>
+
+
         </section>
 
       </div><!-- /.content-wrapper -->
@@ -53,7 +79,6 @@
     <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <script src="plugins/fastclick/fastclick.min.js"></script>
     <script src="dist/js/admin_lte_lib.js" type="text/javascript"></script>
-    <script src="lib/lodash/lodash.min.js" type="text/javascript"></script>
     <script src="lib/angular/angular.min.js" type="text/javascript"></script>
     <script src="lib/angular-route/angular-route.min.js" type="text/javascript"></script>
 
@@ -61,12 +86,11 @@
     <script src="app/services/demo.js"></script>
     <script src="app/services/nodes.js"></script>
     <script src="app/services/users.js"></script>
-    <script src="app/services/lessons.js"></script>
-    <script src="app/admin/admin.js"></script>
-    <script src="app/app.js"></script>
+    <script src="app/services/editor.js"></script>
+    <script src="app/client/client.js"></script>
+    <script src="app/client-app.js"></script>
     <script src="app/directives/content.js"></script>
     <script src="app/directives/users.js"></script>
-    <script src="app/directives/lessons.js"></script>
     <script src="app/directives/navigation.js"></script>
 
   </body>

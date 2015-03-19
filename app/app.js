@@ -1,44 +1,39 @@
 var app = angular.module('acmlan', ['ngRoute', 'tangeloAdmin']);
 
-app.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/home', {
-        templateUrl: 'app/partials/home.html',
-        controller: 'AdminHomeController'
-      }).
-      when('/users', {
-        templateUrl: 'app/partials/users.html',
-        controller: 'AdminUserController'
-      }).
-      when('/users/add', {
-        templateUrl: 'app/partials/users-add.html',
-        controller: 'AdminUserController'
-      }).
-      when('/users/import', {
-        templateUrl: 'app/partials/users-import.html',
-        controller: 'AdminUserController'
-      }).
-      when('/servers', {
-        templateUrl: 'app/partials/servers.html',
-        controller: 'AdminHomeController'
-      }).
-      when('/lessons', {
-        templateUrl: 'app/partials/lessons.html',
-        controller: 'AdminLessonController'
-      }).
-      when('/lessons/add', {
-        templateUrl: 'app/partials/lessons-add.html',
-        controller: 'AdminLessonController'
-      }).
-      when('/users/update', {
-        templateUrl: 'app/partials/users-update.html',
-        controller: 'AdminUserController'
-      }).
-      otherwise({
-        redirectTo: '/home'
-      });
-  }]);
+app.config(['$routeProvider', function ($routeProvider) {
+  $routeProvider.
+    when('/home', {
+      templateUrl: 'app/partials/home.html',
+      controller: 'AdminHomeController'
+    }).
+    when('/users', {
+      templateUrl: 'app/partials/users.html',
+      controller: 'AdminUserController'
+    }).
+    when('/users/add', {
+      templateUrl: 'app/partials/users-add.html',
+      controller: 'AdminUserController'
+    }).
+    when('/users/edit/:_id', {
+      templateUrl: 'app/partials/users-edit.html',
+      controller: 'AdminUserController'
+    }).
+    when('/users/import', {
+      templateUrl: 'app/partials/users-import.html',
+      controller: 'AdminUserController'
+    }).
+    when('/servers', {
+      templateUrl: 'app/partials/servers.html',
+      controller: 'AdminHomeController'
+    }).
+    when('/lessons', {
+      templateUrl: 'app/partials/lessons.html',
+      controller: 'AdminHomeController'
+    }).
+    otherwise({
+      redirectTo: '/home'
+    });
+}]);
 
 
 

@@ -1,48 +1,43 @@
-    <form role="form" user-form>
-      <div class="box-body">
-        <div class="form-group">
-          <label for="user-username">Username</label>
-          <input required type="text" class="form-control" ng-model="user.username" id="user-username" placeholder="steve101">
-        </div>
+<form role="form" user-form>
+  <div class="box-body">
+    <div class="form-group">
+      <label for="user-username">Username</label>
+      <input required type="text" class="form-control" ng-model="user.username" id="user-username" placeholder="Username">
+    </div>
+
+    <div class="form-group">
+      <label for="user-fname">First Name</label>
+      <input required type="text" class="form-control" ng-model="user.name_first" id="user-fname" placeholder="First Name">
+    </div>
 
 
-        <div class="form-group">
-          <label for="user-fname">First Name</label>
-          <input required type="text" class="form-control" ng-model="user.name.first" id="user-fname" placeholder="First Name">
-        </div>
+    <div class="form-group">
+      <label for="user-lname">Last Name</label>
+      <input required type="text" class="form-control" ng-model="user.name_last" id="user-lname" placeholder="Last Name">
+    </div>
 
+    <div class="form-group">
+      <label for="user-email">Email</label>
+      <input required type="email" class="form-control" ng-model="user.email" id="user-email" placeholder="user@email.com">
+    </div>
 
-        <div class="form-group">
-          <label for="user-lname">Last Name</label>
-          <input required type="text" class="form-control" ng-model="user.name.last" id="user-lname" placeholder="Last Name">
-        </div>
+    <div class="form-group">
+      <label>Type</label>
+      <br>
+      <label><input type="radio" ng-model="user.type" value="user"> User</label>
+      <br>
+      <label><input type="radio" ng-model="user.type" value="admin"> Admin</label>
+    </div>
 
-        <div class="form-group"> 
-          <label for="user-email">Email</labael>
-          <input required type="email" class="form-control" ng-model="user.email" id="user-email" placeholder="me@example.com">
-        </div>
+    <div class="form-group">
+      <label for="user-password">Password</label>
+      <input required type="password" class="form-control" id="user-password">
+      <label for="user-password-confirm">Confirm Password</label>
+      <input required type="password" class="form-control" id="user-password-confirm">
+    </div>
+  </div>
 
-
-        <div class="form-group"
-
-
-		ng-init="options = [{label: 'Yes',value:true}, {label:'No', value: false}]; user.isAdmin = options[0]"
->
-          <label for="user-type">Is Admin?</label>
-            <select 
-		ng-model="user.isAdmin"
-                ng-options="opt as opt.label for opt in options">
-
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInput requiredPassword1">Password</label>
-          <input required type="password" class="form-control" ng-model="user.password" id="exampleInput requiredPassword1" placeholder="Password">
-        </div>
-
-      </div><!-- /.box-body -->
-
-      <div class="box-footer">
-        <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
-      </div>
-    </form>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+  </div>
+</form>

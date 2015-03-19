@@ -1,23 +1,23 @@
 (function lessonServicesModule(angular) {
-	'use strict'
+  'use strict'
 
-	var app = angular.module('tangeloLessonServices', []);
+  var app = angular.module('tangeloLessonServices', []);
 
-	app.service('lessonService', ['$http', function($http){
-		var url = '/uploads/';
+  app.service('lessonService', ['$http', function ($http) {
+    var url = '/uploads/';
 
-		return {
-			getAll: function() {
-				return $http.get( url );
-			},
+    return {
+      getAll: function () {
+        return $http.get(url);
+      },
 
-			get: function( userID ) {
-				return $http.get( url + userID );
-			},
+      get: function (userID) {
+        return $http.get(url + userID);
+      },
 
-			create: function( lesson ) {
-				$http.post( url, lesson );
-			}
-		};
-	}]);
+      create: function (lesson) {
+        $http.post(url, lesson);
+      }
+    };
+  }]);
 })(angular);
