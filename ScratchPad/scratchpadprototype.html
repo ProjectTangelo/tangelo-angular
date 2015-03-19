@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="ScratchPad" ng-controller="displayController">
+  <button ng-click="toggle()" style="float:right; clear:both">Scratch Pad</button>
+  <div>
+  <p ng-show="display"><textarea rows="30" cols="50" style="float: right;clear:both"></textarea></p>
+</div>
+</div>
+
+<script>
+angular.module('ScratchPad', []).controller('displayController', ['$scope', function($scope) {
+    $scope.display=false,
+    $scope.toggle = function() {
+        $scope.display = !$scope.display;
+    };
+}]);
+</script>
+
+</body>
+</html>

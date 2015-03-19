@@ -2,7 +2,15 @@
 
   'use strict';
 
-  var app = angular.module('tangeloAdmin', ['demoServices', 'tangeloNodeServices', 'tangeloUserServices', 'userDirectives', 'contentDirectives']);
+  var app = angular.module('tangeloAdmin', [
+    'demoServices',
+    'tangeloNodeServices',
+    'tangeloUserServices',
+    'userDirectives',
+    'contentDirectives',
+    'tangeloLessonServices',
+    'lessonDirectives'
+  ]);
 
   app.controller('AdminHomeController', ['$scope', 'globalCounterService', function ($scope, globalCounterService) {
     $scope.counter = 0;
@@ -18,6 +26,10 @@
   app.controller('AdminUserController', ['$scope', 'userService', function ($scope, userService) {
     $scope.users = userService;
   }]);
+
+  app.controller('AdminLessonController', ['$scope', 'userService', function ($scope, lessonService) {
+    $scope.lessonService = lessonService;
+  }])
 
 
 })(angular);

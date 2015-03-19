@@ -1,0 +1,2 @@
+I have created a protype for the iddedt and text area, 
+but I have yet to modify it to properly display in Tangelo-Angular.
