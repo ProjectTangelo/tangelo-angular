@@ -97,8 +97,8 @@
   //     }
   //   };
   // }]);
+  app.directive('userAdd', ['userService', '$location', function userAdd(userService, $location) {
 
-  app.directive('userAdd', ['userService', '$location', function userAdd(userService, $loctation) {
 
     return {
       restrict: 'A',
@@ -125,6 +125,7 @@
         var hasSubmit = false;
         $scope.user = {};
         userService.get($routeParams._id).then(function (res) {
+          delete res.data.password;
           $scope.user = res.data;
         });
 
