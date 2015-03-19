@@ -82,21 +82,40 @@
   }]);
 
 
-  app.directive('userForm', ['userService', '$location', function userForm(userService, $location) {
+  // app.directive('userForm', ['userService', '$location', function userForm(userService, $location) {
+  //   return {
+  //     restrict: 'A',
+  //     link: function ($scope, iElm, iAttrs, controller) {
+  //       var hasSubmit = false;
+  //       $scope.user = {};
+  //       $scope.submit = function submitUserForm() {
+  //         if (hasSubmit) return;
+  //         hasSubmit = true;
+  //         userService.add($scope.user);
+  //         $location.path('/users');
+  //       }
+  //     }
+  //   };
+  // }]);
+
+  app.directive('userAdd', ['userService', '$location', function userAdd(userService, $loctation) {
+
     return {
       restrict: 'A',
       link: function ($scope, iElm, iAttrs, controller) {
         var hasSubmit = false;
         $scope.user = {};
-        $scope.submit = function submitUserForm() {
+        $scope.submit = function submitUserAdd() {
           if (hasSubmit) return;
           hasSubmit = true;
-          userService.add($scope.user);
-          $location.path('/users');
+          // console.log('ADD USER', $scope.user);
+          userService.add($scope.user).then(function (res) {
+            $location.path('/users');
+          });
         }
       }
-    };
-  }]);
+    }
+  }])
 
   app.directive('userEdit', ['userService', '$location', '$routeParams', function userForm(userService, $location, $routeParams) {
     return {
@@ -104,6 +123,7 @@
       restrict: 'A',
       link: function ($scope, iElm, iAttrs, controller) {
         var hasSubmit = false;
+        $scope.user = {};
         userService.get($routeParams._id).then(function (res) {
           $scope.user = res.data;
         });
@@ -111,6 +131,7 @@
         $scope.submit = function submitUserForm() {
           if (hasSubmit) return;
           hasSubmit = true;
+          // console.log('UPDATE USER', $scope.user);
           userService.update($scope.user).then(function (res) {
             $location.path('/users');
           });
