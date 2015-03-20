@@ -25,15 +25,15 @@
 						// console.log('Result: ' + $scope.lesson.content);
 						// console.log('Result: ' + window.btoa($scope.lesson.content));
 						lessonService.create( $scope.lesson );
+
+						// Redirects when done creating the files.
+						$location.path('/lessons/');
 					};
 
+					// reader.readAsBinaryString( $scope.lesson.file );
 					reader.readAsBinaryString( $scope.lesson.file );
 					// reader.readAsText( $scope.lesson.file );
-
 					// console.log($scope.lesson.file);
-
-
-					$location.path('/lessons/');
 					// console.log( $scope.lesson );
 				}
 			}
@@ -60,7 +60,11 @@
 
 				$scope.deleteLesson = function deleteLesson( file, elemID ) {
 					// console.log('Deleting file: ' + id + ' ID: ' + elemID);
-					$http.delete('/uploads/' + file._id);
+					$(iElem).find( '#' + elemID ).remove();
+					console.log( '#' + elemID );
+					$http.delete('/uploads/' + file._id).then(function(res) {
+						// $location.path('/lessons');
+					});
 				};
 			}
 		};
