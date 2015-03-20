@@ -6,7 +6,17 @@
   app.service('lessonService', ['$http', function ($http) {
     var url = '/uploads/';
 
+    var lessonToEdit;
+
     return {
+      setToEdit: function( fileID ) {
+        lessonToEdit = $http.get(url + userID);
+      },
+
+      getLessonToEdit: function() {
+        return lessonToEdit;
+      },
+
       getAll: function () {
         return $http.get(url);
       },

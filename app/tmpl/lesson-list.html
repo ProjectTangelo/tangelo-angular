@@ -10,14 +10,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="file in files track by $index">
-		<!-- <tr ng-repeat="file in files track by $index" ng-click="viewLesson( file )"> -->
+		<!-- <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}"> -->
+		<tr ng-repeat="file in files track by $index" ng-click="viewLesson( file )" id="file{{ $index + 1 }}">
 			<!-- <td>{{ $index + 1 }}</td> -->
 			<td>{{ file._id }}</td>
 			<td>{{ file.name }}</td>
 			<td>{{ file.file.name }}</td>
 			<td>{{ file.size }}</td>
 			<td>{{ file.file.type }}</td>
+			<td ng-click="deleteLesson(file, 'file' + $index )"><span class="glyphicon glyphicon-remove"></span></td>
 		</tr>
 	</tbody>
 	</table>

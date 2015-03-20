@@ -55,8 +55,29 @@
 				
 				// TODO: Set this up to view a single file and its data.
 				$scope.viewLesson = function viewLesson( file ) {
-					$location.path('/uploads');
+					$location.path('/lessons/edit/' + file._id);
 				};
+
+				$scope.deleteLesson = function deleteLesson( file, elemID ) {
+					// console.log('Deleting file: ' + id + ' ID: ' + elemID);
+					$http.delete('/uploads/' + file._id);
+				};
+			}
+		};
+	}]);
+
+	app.directive('lessonEdit', ['lessonService', '$location', '$http', '$routeParams', '$sce', function lessonEdit( lessonService, $location, $http, $routeParams, $sce) {
+		return {
+			scope: {},
+			templateUrl: 'app/tmpl/lessons-edit.html',
+			restrict: 'E',
+			replace: true,
+			link: function($scope, iElem, iAttrs, controller) {
+				lessonService.get($routeParams._id).then(function (res) {
+					var $e = $(iElem).find('.marked');
+					$scope.lesson = marked(res.data);
+					$e.html($scope.lesson);
+				});
 			}
 		};
 	}]);
