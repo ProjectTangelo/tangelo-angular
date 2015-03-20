@@ -11,7 +11,7 @@
 				$scope.lesson = {};
 
 				$scope.submit = function submitLessonForm() {
-					// if( hasSubmit ) return;
+					if( hasSubmit ) return;
 					hasSubmit = true;
 
 					// Load the file
@@ -33,7 +33,7 @@
 					// console.log($scope.lesson.file);
 
 
-					// $location.path('/lessons/');
+					$location.path('/lessons/');
 					// console.log( $scope.lesson );
 				}
 			}
