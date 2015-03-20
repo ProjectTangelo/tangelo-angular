@@ -42,6 +42,7 @@
       },
 
       add: function addUser(user) {
+        console.log(user);
         return $http.post(this.URI, user);
       },
 

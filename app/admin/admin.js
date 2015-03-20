@@ -9,7 +9,9 @@
     'userDirectives',
     'contentDirectives',
     'tangeloLessonServices',
-    'lessonDirectives'
+    'lessonDirectives',
+    'lxcDirectives', 
+    'tangeloLXCServices'
   ]);
 
   app.controller('AdminHomeController', ['$scope', 'globalCounterService', function ($scope, globalCounterService) {
