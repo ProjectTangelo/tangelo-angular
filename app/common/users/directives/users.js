@@ -1,12 +1,12 @@
 (function userDirectives(angular) {
-  'use strict'
+  'use strict';
 
   var app = angular.module('userDirectives', ['tangeloUserServices']);
   app.directive('userList', ['userService', '$location', function (userService, $location) {
     // Runs during compile
     return {
       scope: {},
-      templateUrl: 'app/tmpl/user-list.html',
+      templateUrl: 'app/common/users/templates/user-list.html',
       restrict: 'E',
       replace: true,
       link: function ($scope, iElm, iAttrs, controller) {
@@ -25,7 +25,7 @@
     var importedUsers = [];
     return {
       scope: {},
-      templateUrl: 'app/tmpl/users-csv-import.html',
+      templateUrl: 'app/common/users/templates/users-csv-import.html',
       restrict: 'E',
       replace: true,
       link: function ($scope, iElm, iAttrs, controller) {
