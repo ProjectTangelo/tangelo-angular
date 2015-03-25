@@ -3,37 +3,37 @@
 
   var app = angular.module('tangelo', [
     'ngRoute',
+    'tangeloScratchServices',
     'tangeloNodeServices',
     'tangeloUserServices',
     'userDirectives',
     'contentDirectives',
-    'editorServices',
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
     .when('/home', {
-      templateUrl: 'app/client-partials/home.html',
-      controller: 'ClientHomeController'
+      templateUrl: 'app/client/views/home.html',
+      controller: 'ClientMainController'
     })
     .when('/profile', {
-      templateUrl: 'app/client-partials/profile.html',
-      controller: 'ClientHomeController'
+      templateUrl: 'app/client/views/profile.html',
+      controller: 'ClientMainController'
     })
     .when('/scratch', {
-      templateUrl: 'app/client-partials/scratch.html',
-      controller: 'ClientHomeController'
+      templateUrl: 'app/client/views/scratch.html',
+      controller: 'ClientMainController'
     })
     .when('/lesson', {
-      templateUrl: 'app/client-partials/lesson.html',
-      controller: 'ClientHomeController'
+      templateUrl: 'app/client/views/lesson.html',
+      controller: 'ClientMainController'
     })
     .otherwise({
       redirectTo: '/home'
     });
   }]);
 
-  app.controller('ClientMainController', ['$scope', '$location', 'stratchService', function ($scope, $location, stratchService) {
+  app.controller('ClientMainController', ['$scope', '$location', 'scratchService', function ($scope, $location, scratchService) {
     var current = '';
 
     $scope.showPanel = false;
@@ -41,7 +41,7 @@
       value: ''
     };
     $scope.panelChange = function (e) {
-      stratchService.set($scope.scratchText.value);
+      scratchService.set($scope.scratchText.value);
       var href = e.target.getAttribute('link');
       if (href == current) {
         $scope.showPanel = false;
@@ -60,7 +60,7 @@
 
   app.controller('AdminUserController', ['$scope', 'userService', function ($scope, userService) {
     $scope.users = userService;
-  }])
+  }]);
 
 
 })(angular);
