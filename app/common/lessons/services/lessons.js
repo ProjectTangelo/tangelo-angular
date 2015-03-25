@@ -1,5 +1,5 @@
 (function lessonServicesModule(angular) {
-  'use strict'
+  'use strict';
 
   var app = angular.module('tangeloLessonServices', []);
 
@@ -9,11 +9,11 @@
     var lessonToEdit;
 
     return {
-      setToEdit: function( fileID ) {
+      setToEdit: function (fileID) {
         lessonToEdit = $http.get(url + userID);
       },
 
-      getLessonToEdit: function() {
+      getLessonToEdit: function () {
         return lessonToEdit;
       },
 

@@ -1,44 +1,44 @@
 var app = angular.module('acmlan', ['ngRoute', 'tangeloAdmin']);
 
 app.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.
-    when('/home', {
-      templateUrl: 'app/partials/home.html',
+  $routeProvider
+    .when('/home', {
+      templateUrl: 'app/admin/views/home.html',
       controller: 'AdminHomeController'
-    }).
-    when('/users', {
-      templateUrl: 'app/partials/users.html',
+    })
+    .when('/users', {
+      templateUrl: 'app/admin/views/users.html',
       controller: 'AdminUserController'
-    }).
-    when('/users/add', {
-      templateUrl: 'app/partials/users-add.html',
+    })
+    .when('/users/add', {
+      templateUrl: 'app/admin/views/users-add.html',
       controller: 'AdminUserController'
-    }).
-    when('/users/edit/:_id', {
-      templateUrl: 'app/partials/users-edit.html',
+    })
+    .when('/users/edit/:_id', {
+      templateUrl: 'app/admin/views/users-edit.html',
       controller: 'AdminUserController'
-    }).
-    when('/users/import', {
-      templateUrl: 'app/partials/users-import.html',
+    })
+    .when('/users/import', {
+      templateUrl: 'app/admin/views/users-import.html',
       controller: 'AdminUserController'
-    }).
-    when('/servers', {
-      templateUrl: 'app/partials/servers.html',
+    })
+    .when('/servers', {
+      templateUrl: 'app/admin/views/servers.html',
       controller: 'AdminHomeController'
-    }).
-    when('/lessons', {
-      templateUrl: 'app/partials/lessons.html',
+    })
+    .when('/lessons', {
+      templateUrl: 'app/admin/views/lessons.html',
       controller: 'AdminLessonController'
-    }).
-    when('/lessons/add', {
-      templateUrl: 'app/partials/lessons-add.html',
+    })
+    .when('/lessons/add', {
+      templateUrl: 'app/admin/views/lessons-add.html',
       controller: 'AdminLessonController'
-    }).
-    when('/lessons/edit/:_id', {
-      templateUrl: 'app/partials/lessons-edit.html',
+    })
+    .when('/lessons/edit/:_id', {
+      templateUrl: 'app/admin/views/lessons-edit.html',
       controller: 'AdminLessonController'
-    }).
-    otherwise({
+    })
+    .otherwise({
       redirectTo: '/home'
     });
 }]);
@@ -74,7 +74,7 @@ $(function () {
     $(o.BSTooltipSelector).tooltip();
   }
 
-  if(o.enableFastclick && typeof FastClick != 'undefined') {
+  if (o.enableFastclick && typeof FastClick != 'undefined') {
     FastClick.attach(document.body);
   }
 

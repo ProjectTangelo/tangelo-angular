@@ -10,7 +10,7 @@
     'contentDirectives',
     'tangeloLessonServices',
     'lessonDirectives',
-    'lxcDirectives', 
+    'lxcDirectives',
     'tangeloLXCServices'
   ]);
 
