@@ -4,7 +4,6 @@
   var app = angular.module('contentDirectives', []);
 
   app.directive('contentBox', [function () {
-    // Runs during compile
     return {
       scope: {},
       replace: true,
@@ -19,7 +18,6 @@
   }]);
 
   app.directive('statusBlock', [function () {
-    // Runs during compile
     return {
       scope: {},
       restrict: 'E',
@@ -34,30 +32,8 @@
     };
   }]);
 
-  app.directive('acmCounter', [function () {
-    // Runs during compile
-    return {
-      restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-      replace: true,
-      templateUrl: 'app/common/base/templates/number-block.html',
-      scope: {},
-      transclude: true,
-
-      link: function ($scope, iElm, iAttrs, controller) {
-
-        $scope.inc = Number(iAttrs.inc) || 0;
-        $scope.counter = $scope.$parent.counter;
-        $scope.name = iAttrs.name;
-
-        $scope.$parent.$watch('counter', function (newVal, oldVal) {
-          $scope.counter = $scope.counter + $scope.inc;
-        });
-      }
-    };
-  }]);
-
   // Directive for a sidebars
-  app.directive('acmSidebar', [function () {
+  app.directive('sidebar', [function () {
     // Recurse through a menu list and render a sidebar
     function render_menu(menu, root) {
       for (var idx in menu) {
@@ -97,7 +73,7 @@
         var $menuRoot = jQuery(iElm).find('.sidebar-menu');
         var menu = [];
         var root = $menuRoot;
-        render_menu(menu, root);
+        // render_menu(menu, root);
       },
     };
   }]);

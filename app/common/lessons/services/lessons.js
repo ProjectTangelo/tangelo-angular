@@ -1,4 +1,4 @@
-(function lessonServicesModule(angular) {
+(function lessonServices(angular) {
   'use strict';
 
   var app = angular.module('tangeloLessonServices', []);

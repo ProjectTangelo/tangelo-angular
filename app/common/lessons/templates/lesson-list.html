@@ -1,28 +1,32 @@
 <div class="lesson-list">
-	<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Lesson ID</th>
-			<th>Lesson Name</th>
-			<th>File Name</th>
-			<th>Size</th>
-			<th>Type</th>
-			<th>Open</th>
-			<th>Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		<!-- <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}"> -->
-		<tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}">
-			<!-- <td>{{ $index + 1 }}</td> -->
-			<td>{{ file._id }}</td>
-			<td>{{ file.name }}</td>
-			<td>{{ file.file.name }}</td>
-			<td>{{ file.size }}</td>
-			<td>{{ file.file.type }}</td>
-			<td ng-click="viewLesson( file )"><span class="glyphicon glyphicon-folder-open"></span></td>
-			<td ng-click="deleteLesson(file, 'file' + ($index+1) )"><span class="glyphicon glyphicon-remove"></span></td>
-		</tr>
-	</tbody>
-	</table>
-</div>			
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Lesson ID</th>
+        <th>Lesson Name</th>
+        <th>File Name</th>
+        <th>Size</th>
+        <th>Type</th>
+        <th>Open</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}"> -->
+      <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}">
+        <!-- <td>{{ $index + 1 }}</td> -->
+        <td>{{ file._id }}</td>
+        <td>{{ file.name }}</td>
+        <td>{{ file.file.name }}</td>
+        <td>{{ file.size }}</td>
+        <td>{{ file.file.type }}</td>
+        <td ng-click="viewLesson(file)">
+          <span class="glyphicon glyphicon-folder-open"></span>
+        </td>
+        <td ng-click="deleteLesson(file, 'file' + ($index+1) )">
+          <span class="glyphicon glyphicon-remove"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

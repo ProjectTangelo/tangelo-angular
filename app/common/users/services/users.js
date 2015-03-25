@@ -3,25 +3,25 @@
 
   var app = angular.module('tangeloUserServices', []);
   app.service('userService', ['$http', function ($http) {
-    var users = [{
-      'fname': 'David',
-      'lname': 'Nuon',
-      'email': 'david@davidnuon.com',
-      'username': 'davidnuon',
-      'type': 'User'
-    }, {
-      'fname': 'Tyler',
-      'lname': 'Goodman',
-      'username': 'davidnuon',
-      'email': 'david@davidnuon.com',
-      'type': 'User'
-    }, {
-      'fname': 'Tifanny',
-      'lname': 'G',
-      'username': 'davidnuon',
-      'email': 'david@davidnuon.com',
-      'type': 'User'
-    }];
+    // var fixtures = [{
+    //   'fname': 'David',
+    //   'lname': 'Nuon',
+    //   'email': 'david@davidnuon.com',
+    //   'username': 'davidnuon',
+    //   'type': 'User'
+    // }, {
+    //   'fname': 'Tyler',
+    //   'lname': 'Goodman',
+    //   'username': 'davidnuon',
+    //   'email': 'david@davidnuon.com',
+    //   'type': 'User'
+    // }, {
+    //   'fname': 'Tifanny',
+    //   'lname': 'G',
+    //   'username': 'davidnuon',
+    //   'email': 'david@davidnuon.com',
+    //   'type': 'User'
+    // }];
 
 
     return {
