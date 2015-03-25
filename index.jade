@@ -52,7 +52,8 @@ html(lang='en')
     script(src='app/common/users/directives/users.js')
     script(src='app/app.js')
 
-    - var user = { type: 'admin' }
+    // - var user = { type: 'admin' }
+    - var user = { type: 'user' }
     if user.type === 'admin'
       script(src='app/admin/admin.js')
     else
