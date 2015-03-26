@@ -1,0 +1,22 @@
+extends ./base
+
+block css
+  link(href='lib/admin-lte/dist/css/skins/skin-yellow.min.css', rel='stylesheet', type='text/css')
+
+block js
+  script(src='app/admin/admin.js')
+
+block body
+  div.wrapper.skin-yellow
+    header.main-header
+      a.logo(href='#/')
+        strong tan
+        |gelo
+      nav.navbar.navbar-static-top(role='navigation')
+        a.sidebar-toggle(href='#', data-toggle='offcanvas', role='button')
+          span.sr-only Toggle navigtaion
+
+    sidebar
+
+    div.content-wrapper
+      section.content(ng-view)

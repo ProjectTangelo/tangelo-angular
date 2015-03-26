@@ -1,0 +1,37 @@
+extends ./base
+
+block css
+  link(href='lib/admin-lte/dist/css/skins/skin-purple.min.css', rel='stylesheet', type='text/css')
+
+block js
+  script(src='app/client/client.js')
+
+
+//- I think this should be elsewhere...
+block body
+  div.wrapper.skin-purple
+    header.main-header
+      a.logo(href='#/')
+        strong tan
+        |gelo
+      nav.navbar.navbar-static-top(role='navigation')
+        ul.nav.navbar-nav.navbar-custom-menu
+          li
+            a(link='home', ng-click='panelChange($event)') Info
+          li
+            a(link='scratch', ng-click='panelChange($event)') ScratchPad
+          li
+            a(link='lesson', ng-click='panelChange($event)') Lesson Plan
+    
+    div.right-panel(ng-show='showPanel')
+      div.right-panel-content
+        div(style='padding:15px 5px;')
+          div(ng-view)
+      div.lowerbar-ui.navbar.navbar-static-top
+        ul.nav.navbar-nav.navbar-custom-menu
+          li
+            a(ng-click='showPanel = false') Close
+
+    div.content-wrapper(style='margin-left:0;')
+      section.full-bleed
+        div(style='position:absolute;right:0;top:0;left:0;bottom:0;') CONSOLE HERE
