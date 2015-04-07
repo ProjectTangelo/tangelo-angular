@@ -3,43 +3,6 @@
 
   var app = angular.module('submissionDirectives', ['tangeloSubmissionServices']);
 
-  app.directive('lessonForm', ['submissionService', '$location', function lessonFrom(lessonService, $location) {
-    return {
-      restrict: 'A',
-      link: function ($scope, iElem, iAttrs, controller) {
-        var hasSubmit = false;
-        $scope.lesson = {};
-
-        $scope.submit = function submitLessonForm() {
-          if (hasSubmit) return;
-          hasSubmit = true;
-
-          // Load the file
-          $scope.lesson.file = iElem.find('#fileUpload').get(0).files[0];
-          $scope.lesson.size = $scope.lesson.file.size;
-
-          var reader = new FileReader();
-          reader.onloadend = function () {
-            // $scope.lesson.content = window.btoa(reader.result);
-            $scope.lesson.content = reader.result;
-            // console.log('Result: ' + $scope.lesson.content);
-            // console.log('Result: ' + window.btoa($scope.lesson.content));
-            lessonService.create($scope.lesson);
-
-            // Redirects when done creating the files.
-            $location.path('/lessons/');
-          };
-
-          // reader.readAsBinaryString( $scope.lesson.file );
-          reader.readAsBinaryString($scope.lesson.file);
-          // reader.readAsText( $scope.lesson.file );
-          // console.log($scope.lesson.file);
-          // console.log( $scope.lesson );
-        }
-      }
-    }
-  }]);
-
   app.directive('submissionList', ['submissionService', '$location', '$http', function lessonList(submissionService, $location, $http) {
     return {
       scope: {},
@@ -70,6 +33,29 @@
     };
   }]);
 
+  app.directive('submissionComments', ['submissionCommentsService', '$location', '$http', '$routeParams', '$sce', function lessonEdit(commentsService, $location, $http, $routeParams, $sce) {
+    return {
+      scope: {},
+      templateUrl: 'app/common/submissions/templates/submission-comments.html',
+      restrict: 'E',
+      replace: true,
+      link: function ($scope, iElem, iAttrs, controller) {
+          $scope.commentList = commentsService.get();
+
+          $scope.sendComment = function sendComment (event) {
+              commentsService.create({
+                'name' : 'Administrator', 
+                'date' : 'now',
+                'comment': $scope.commentText
+              }).then(function (data) { 
+                $scope.commentText = '';
+                $scope.commentList = commentsService.get();
+              });
+          }
+      }
+    };
+  }]);
+
   app.directive('submissionView', ['submissionService', '$location', '$http', '$routeParams', '$sce', function lessonEdit(lessonService, $location, $http, $routeParams, $sce) {
     return {
       scope: {},
@@ -83,4 +69,5 @@
       }
     };
   }]);
+
 })(angular);
