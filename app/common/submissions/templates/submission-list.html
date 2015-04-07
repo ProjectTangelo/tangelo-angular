@@ -1,0 +1,26 @@
+<div class="lesson-list">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sender</th>
+        <th>Assignemnt Number</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}"> -->
+      <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}">
+        <!-- <td>{{ $index + 1 }}</td> -->
+        <td>{{ file.owner }}</td>
+        <td>{{ file.number }}</td>
+        <td>{{ file.content }}</td>
+        <td ng-click="viewLesson(file)">
+          <span class="glyphicon glyphicon-folder-open"></span>
+        </td>
+        <td ng-click="deleteLesson(file, 'file' + ($index+1) )">
+          <span class="glyphicon glyphicon-remove"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

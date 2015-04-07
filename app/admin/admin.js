@@ -5,12 +5,14 @@
     'ngRoute',
     'tangeloLessonServices',
     'tangeloLXCServices',
+    'tangeloSubmissionServices',
     'tangeloNodeServices',
     'tangeloUserServices',
     'contentDirectives',
     'lessonDirectives',
     'lxcDirectives',
     'userDirectives',
+    'submissionDirectives'
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {
@@ -52,12 +54,12 @@
         controller: 'AdminLessonController'
       })
       .when('/submissions', {
-        templateUrl: 'app/admin/views/lessons.html',
-        controller: 'AdminLessonController'
+        templateUrl: 'app/admin/views/submissions.html',
+        controller: 'AdminSubmissionController'
       })
       .when('/submissions/view/:_id', {
-        templateUrl: 'app/admin/views/lessons-edit.html',
-        controller: 'AdminLessonController'
+        templateUrl: 'app/admin/views/submissions-view.html',
+        controller: 'AdminSubmissionController'
       })
       .otherwise({
         redirectTo: '/home'
@@ -69,6 +71,10 @@
 
   app.controller('AdminUserController', ['$scope', 'userService', function ($scope, userService) {
     $scope.users = userService;
+  }]);
+
+  app.controller('AdminSubmissionController', ['$scope', 'userService', function ($scope, lessonService) {
+
   }]);
 
   app.controller('AdminLessonController', ['$scope', 'userService', function ($scope, lessonService) {

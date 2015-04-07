@@ -19,9 +19,13 @@ block body
           li
             a(link='home', ng-click='panelChange($event)') Info
           li
+            a(link='profile', ng-click='panelChange($event)') Profile
+          li
+            a(link='scratch', ng-click='panelChange($event)') Submissions
+          li
             a(link='scratch', ng-click='panelChange($event)') ScratchPad
           li
-            a(link='lesson', ng-click='panelChange($event)') Lesson Plan
+            a(link='lesson', ng-click='panelChange($event)') Lesson Plans
     
     div.right-panel(ng-show='showPanel')
       div.right-panel-content
