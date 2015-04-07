@@ -18,12 +18,15 @@
       },
 
       getAll: function () {
-        console.log('foo');
         return $http.get(url);
       },
 
       get: function (userID) {
         return $http.get(url + userID);
+      },
+
+      delete: function (userID) {
+        return $http.delete(url + userID);
       },
 
       create: function (lesson) {
