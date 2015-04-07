@@ -3,6 +3,43 @@
 
   var app = angular.module('tangeloSubmissionServices', []);
 
+  app.service('submissionCommentsService', ['$http', '$q', function ($http, $q) {
+      var comments = [];
+      var url = '/feedback/'; // whats the name of this endpoint?
+
+      var lessonToEdit;
+
+      return {
+        setToEdit: function (fileID) {
+          lessonToEdit = $http.get(url + userID);
+        },
+
+        getLessonToEdit: function () {
+          return lessonToEdit;
+        },
+
+        getAll: function () {
+          return $http.get(url);
+        },
+
+        get: function (userID) {
+          return comments;
+        },
+
+        delete: function (userID) {
+          return $http.delete(url + userID);
+        },
+
+        create: function (comment) {
+          comments.push(comment);
+          return $q(function (resolve, reject) {
+            resolve(true)
+          });
+        }
+      };
+    }]);
+
+
   app.service('submissionService', ['$http', function ($http) {
     var url = '/submission/';
 
