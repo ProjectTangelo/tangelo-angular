@@ -51,6 +51,14 @@
         templateUrl: 'app/admin/views/lessons-edit.html',
         controller: 'AdminLessonController'
       })
+      .when('/submissions', {
+        templateUrl: 'app/admin/views/lessons.html',
+        controller: 'AdminLessonController'
+      })
+      .when('/submissions/view/:_id', {
+        templateUrl: 'app/admin/views/lessons-edit.html',
+        controller: 'AdminLessonController'
+      })
       .otherwise({
         redirectTo: '/home'
       });
