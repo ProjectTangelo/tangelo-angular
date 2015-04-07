@@ -54,15 +54,15 @@
         });
 
         // TODO: Set this up to view a single file and its data.
-        $scope.viewLesson = function viewLesson(file) {
-          $location.path('/lessons/edit/' + file._id);
+        $scope.viewSubmission = function viewSubmission(file) {
+          $location.path('/submissions/view/' + file._id);
         };
 
-        $scope.deleteLesson = function deleteLesson(file, elemID) {
+        $scope.deleteSubmission = function deleteLesson(file, elemID) {
           // console.log('Deleting file: ' + id + ' ID: ' + elemID);
           $(iElem).find('#' + elemID).remove();
           console.log('#' + elemID);
-          $http.delete('/uploads/' + file._id).then(function (res) {
+          submissionService.delete(file._id).then(function (res) {
             // $location.path('/lessons');
           });
         };
@@ -70,17 +70,15 @@
     };
   }]);
 
-  app.directive('lessonEdit', ['submissionService', '$location', '$http', '$routeParams', '$sce', function lessonEdit(lessonService, $location, $http, $routeParams, $sce) {
+  app.directive('submissionView', ['submissionService', '$location', '$http', '$routeParams', '$sce', function lessonEdit(lessonService, $location, $http, $routeParams, $sce) {
     return {
       scope: {},
-      templateUrl: 'app/common/lessons/templates/lessons-edit.html',
+      templateUrl: 'app/common/submissions/templates/submission-view.html',
       restrict: 'E',
       replace: true,
       link: function ($scope, iElem, iAttrs, controller) {
         lessonService.get($routeParams._id).then(function (res) {
-          var $e = $(iElem).find('.marked');
-          $scope.lesson = marked(res.data);
-          $e.html($scope.lesson);
+          $scope.submission = res.data;
         });
       }
     };

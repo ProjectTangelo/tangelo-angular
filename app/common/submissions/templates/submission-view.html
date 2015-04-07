@@ -1,3 +1,10 @@
 <div>
-  <div class="marked"></div>
+	<content-box title="Submission Content">
+		<p><strong>Assigment: {{ submission.number }}</strong></p>
+		<p><strong>From: {{ submission.owner }}</strong></p>
+		<hr>
+		<pre>
+			{{ submission.content }}
+		</pre>
+	</content-box>
 </div>
