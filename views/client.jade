@@ -5,11 +5,11 @@ block css
 
 block js
   script(src='app/client/client.js')
-
+  script(src='app/common/base/services/scratchpad.js')
 
 //- I think this should be elsewhere...
 block body
-  div.wrapper.skin-purple
+  div.wrapper.skin-purple(ng-controller='ClientMainController')
     header.main-header
       a.logo(href='#/')
         strong tan
