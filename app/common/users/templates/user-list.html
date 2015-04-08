@@ -8,16 +8,27 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Type</th>
+      <th>Open</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="user in users track by $index" ng-click="invokeEdit(user)">
+    <tr ng-repeat="user in users track by $index" id="user{{ $index + 1 }}">
       <td>{{ $index + 1 }}</td>
       <td>{{ user.username }}</td>
       <td>{{ user.name_first }}</td>
       <td>{{ user.name_last }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.type }}</td>
+
+      <td ng-click="invokeEdit(user)">
+        <span class="glyphicon glyphicon-folder-open"></span>
+      </td>
+
+      <td ng-click="deleteUser(user, '#user' + ($index+1) )">
+        <span class="glyphicon glyphicon-remove"></span>
+      </td>
+
     </tr>
   </tbody>
   </table>
