@@ -2,7 +2,7 @@
   'use strict';
 
   var app = angular.module('userDirectives', ['tangeloUserServices']);
-  app.directive('userList', ['userService', '$location', function (userService, $location) {
+  app.directive('userList', ['userService', '$location', '$http', function (userService, $location, $http) {
     // Runs during compile
     return {
       scope: {},
@@ -17,6 +17,11 @@
         userService.get().then(function (res) {
           $scope.users = res.data;
         });
+
+        $scope.deleteUser = function deleteUser(user, elemID) {
+          $(iElm).find(elemID).remove();
+          $http.delete('/user/' + user._id);
+        };
       }
     };
   }]);
