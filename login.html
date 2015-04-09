@@ -90,8 +90,12 @@
               password: $scope.password
             }).then(function(res) {
               if (res.data.error) {
-                $scope.message = res.data.error.message;
-                $scope.hasMessage = true;
+                if(res.data.error.message == 'You are already logged in') {
+                  document.location.href = '/';
+                } else {
+                  $scope.message = res.data.error.message;
+                  $scope.hasMessage = true;
+                }
               } else if (res.data.success) {
                 document.location.href = '/';
               }
