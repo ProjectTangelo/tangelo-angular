@@ -21,11 +21,11 @@
       <td>{{ user.email }}</td>
       <td>{{ user.type }}</td>
 
-      <td ng-click="invokeEdit(user)">
+      <td id="edit-button" ng-click="invokeEdit(user)">
         <span class="glyphicon glyphicon-folder-open"></span>
       </td>
 
-      <td ng-click="deleteUser(user, '#user' + ($index+1) )">
+      <td id="delete-button" ng-click="deleteUser(user, '#user' + ($index+1) )">
         <span class="glyphicon glyphicon-remove"></span>
       </td>
 
