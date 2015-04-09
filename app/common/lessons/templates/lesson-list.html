@@ -20,10 +20,10 @@
         <td>{{ file.file.name }}</td>
         <td>{{ file.size }}</td>
         <td>{{ file.file.type }}</td>
-        <td ng-click="viewLesson(file)">
+        <td id="edit-button" ng-click="viewLesson(file)">
           <span class="glyphicon glyphicon-folder-open"></span>
         </td>
-        <td ng-click="deleteLesson(file, 'file' + ($index+1) )">
+        <td id="delete-button" ng-click="deleteLesson(file, 'file' + ($index+1) )">
           <span class="glyphicon glyphicon-remove"></span>
         </td>
       </tr>
