@@ -5,6 +5,7 @@
     'ngRoute',
     'tangeloScratchServices',
     'tangeloNodeServices',
+    'tangeloLessonServices',
     'tangeloUserServices',
     'userDirectives',
     'contentDirectives',
@@ -16,8 +17,8 @@
       templateUrl: 'app/client/views/home.html',
       controller: 'ClientMainController'
     })
-    .when('/profile', {
-      templateUrl: 'app/client/views/profile.html',
+    .when('/submissions', {
+      templateUrl: 'app/client/views/submissions.html',
       controller: 'ClientMainController'
     })
     .when('/scratch', {
@@ -33,13 +34,26 @@
     });
   }]);
 
-  app.controller('ClientMainController', ['$scope', '$location', 'scratchService', function ($scope, $location, scratchService) {
+  app.controller('ClientMainController', ['$scope', '$location', 'scratchService', 'lessonService', '$sce', function ($scope, $location, scratchService, lessonService, $sce) {
     var current = '';
 
     $scope.showPanel = false;
     $scope.scratchText = {
       value: ''
     };
+
+    $scope.loadLesson = function () {
+        lessonService.get($scope.currentLesson._id).then(function (data) {
+          $scope.lessonBuffer = $sce.trustAsHtml(marked(data.data));
+        });
+    };
+
+    lessonService.getAll().then(function (data) {
+        $scope.allLessons = data.data;
+        $scope.currentLesson = $scope.allLessons[0];
+        $scope.loadLesson();
+    })
+
     $scope.panelChange = function (e) {
       scratchService.set($scope.scratchText.value);
       var href = e.target.getAttribute('link');
