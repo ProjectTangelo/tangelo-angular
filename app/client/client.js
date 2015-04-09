@@ -17,8 +17,8 @@
       templateUrl: 'app/client/views/home.html',
       controller: 'ClientMainController'
     })
-    .when('/profile', {
-      templateUrl: 'app/client/views/profile.html',
+    .when('/submissions', {
+      templateUrl: 'app/client/views/submissions.html',
       controller: 'ClientMainController'
     })
     .when('/scratch', {

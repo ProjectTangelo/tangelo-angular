@@ -17,15 +17,14 @@ block body
       nav.navbar.navbar-static-top(role='navigation')
         ul.nav.navbar-nav.navbar-custom-menu
           li
-            a(link='home', ng-click='panelChange($event)') Info
+            a(link='lesson', ng-click='Logout') Logout
           li
-            a(link='profile', ng-click='panelChange($event)') Profile
-          li
-            a(link='scratch', ng-click='panelChange($event)') Submissions
+            a(link='submissions', ng-click='panelChange($event)') Submissions
           li
             a(link='scratch', ng-click='panelChange($event)') ScratchPad
           li
             a(link='lesson', ng-click='panelChange($event)') Lesson Plans
+
     
     div.right-panel(ng-show='showPanel')
       div.right-panel-content
