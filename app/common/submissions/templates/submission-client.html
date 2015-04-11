@@ -1,0 +1,17 @@
+<div class="lesson-list">
+<select
+    ng-model="currentSubmission"
+    ng-options="value._id for value in files"
+    ng-change="loadSubmission()"
+    >
+</select>
+
+<button ng-click="reload()">Reload</button>
+<pre>
+ {{ submissionContent }} 
+</pre>
+<hr />
+<p ng-repeat="item in commentList" style="border-bottom:1px solid #AAA; padding:13px;">
+		{{ item.content }}
+</p>
+</div>

@@ -22,8 +22,8 @@
           return $http.get(url);
         },
 
-        get: function (userID) {
-          return comments;
+        get: function (submission) {
+          return $http.post(url + '/' + submission);
         },
 
         delete: function (userID) {
@@ -31,10 +31,10 @@
         },
 
         create: function (comment) {
-          comments.push(comment);
-          return $q(function (resolve, reject) {
-            resolve(true)
-          });
+          return $http.post(url, {
+	    submission : comment.submission,
+	    content : comment.content
+	  });
         }
       };
     }]);
