@@ -3,6 +3,31 @@
 
   var app = angular.module('submissionDirectives', ['tangeloSubmissionServices']);
 
+  app.directive('subList', ['submissionService',
+	function(submissionService) {
+	    return {
+	      scope: {},
+	      templateUrl: 'app/common/submissions/templates/submission-client.html',
+	      restrict: 'E',
+	      replace: true,
+	      link: function ($scope, iElem, iAttrs, controller) {
+		$scope.reload = function () {
+			submissionService.getAll().then(function (data) {
+			  $scope.submissionContent = '';
+			  $scope.files = data.data;
+			  $scope.currentSubmission = $scope.files[0];
+			});
+		}
+
+		$scope.reload();
+	     $scope.loadSubmission = function () {
+	$scope.submissionContent = $scope.currentSubmission.content;
+	
+	$scope.commentList = $scope.currentSubmission.feedback;
+}
+		}
+	}
+	}]);
   app.directive('submissionList', ['submissionService', '$location', '$http', function lessonList(submissionService, $location, $http) {
     return {
       scope: {},
@@ -33,23 +58,30 @@
     };
   }]);
 
-  app.directive('submissionComments', ['submissionCommentsService', '$location', '$http', '$routeParams', '$sce', function lessonEdit(commentsService, $location, $http, $routeParams, $sce) {
+  app.directive('submissionComments', ['submissionCommentsService', '$location', '$http', '$routeParams', '$sce', 'submissionService', function lessonEdit(commentsService, $location, $http, $routeParams, $sce, subService) {
     return {
       scope: {},
       templateUrl: 'app/common/submissions/templates/submission-comments.html',
       restrict: 'E',
       replace: true,
       link: function ($scope, iElem, iAttrs, controller) {
-          $scope.commentList = commentsService.get();
+	  var submissionID = $location.$$path.split('/');
+	  submissionID = submissionID[submissionID.length - 1];
+          subService.get(submissionID).then(function(data) {
+		$scope.commentList = data.data.feedback;
+	});
 
           $scope.sendComment = function sendComment (event) {
               commentsService.create({
-                'name' : 'Administrator', 
-                'date' : 'now',
-                'comment': $scope.commentText
-              }).then(function (data) { 
+			submission: submissionID, 
+			content : $scope.commentText } )
+		.then(function (data) { 
+		console.log(data);
                 $scope.commentText = '';
-                $scope.commentList = commentsService.get();
+
+          subService.get(submissionID).then(function(data) {
+		$scope.commentList = data.data.feedback;
+	});
               });
           }
       }

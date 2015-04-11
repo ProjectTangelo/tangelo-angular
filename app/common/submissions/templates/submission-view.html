@@ -1,7 +1,7 @@
 <div>
 	<content-box title="Submission Content">
 		<p><strong>Assigment: {{ submission.number }}</strong></p>
-		<p><strong>From: {{ submission.owner }}</strong></p>
+		<p><strong>From: {{ submission.owner.username }}</strong></p>
 		<hr>
 		<pre>
 			{{ submission.content }}

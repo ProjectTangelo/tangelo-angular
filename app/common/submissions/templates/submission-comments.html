@@ -1,13 +1,7 @@
 <div>
-	<ul>
-		<li ng-repeat="item in commentList">
-			<p><strong>Name:</strong>  {{ item.name }}</p>
-			<p><strong>Date:</strong>  {{ item.date }}</p>
-			<p>
-				{{ item.comment }}
-			</p>
-		</li>
-	</ul>
+		<p ng-repeat="item in commentList" style="border-bottom:1px solid #AAA; padding:13px;">
+				{{ item.content }}
+		</p>
 	<div class="form-group">		
 		    <hr ng-show="commentsLength.length > 1">
 		    <textarea ng-model="commentText" class="form-control" name="" id="" cols="30" rows="3"></textarea>

@@ -9,6 +9,7 @@
     'tangeloUserServices',
     'userDirectives',
     'contentDirectives',
+     'submissionDirectives' 
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {
