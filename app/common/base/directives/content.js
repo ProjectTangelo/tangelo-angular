@@ -41,7 +41,7 @@
       link: function ($scope, iElm, iAttrs, controller) {
           $scope.logout = function logoutFunction() {
               $http.get('/logout').then(function(res){
-                  document.location.href = '/login.html';
+                  document.location.href = '/';
               });
           }
       },
