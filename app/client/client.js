@@ -9,7 +9,7 @@
     'tangeloUserServices',
     'userDirectives',
     'contentDirectives',
-    'submissionDirectives' 
+    'submissionDirectives'
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {
@@ -35,12 +35,18 @@
     });
   }]);
 
-  app.controller('ClientMainController', ['$scope', '$location', 'scratchService', 'lessonService', '$sce', function ($scope, $location, scratchService, lessonService, $sce) {
+  app.controller('ClientMainController', ['$http', '$scope', '$location', 'scratchService', 'lessonService', '$sce', function ($http, $scope, $location, scratchService, lessonService, $sce) {
     var current = '';
 
     $scope.showPanel = false;
     $scope.scratchText = {
       value: ''
+    };
+
+    $scope.logout = function () {
+        $http.get('/logout').then(function(res){
+            document.location.href = '/';
+        });
     };
 
     $scope.loadLesson = function () {
