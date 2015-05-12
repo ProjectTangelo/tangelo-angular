@@ -4,13 +4,14 @@
   var app = angular.module('tangeloLessonServices', []);
 
   app.service('lessonService', ['$http', function ($http) {
-    var url = '/uploads/';
+    // var url = '/uploads/';
+    var url = '/file';
 
     var lessonToEdit;
 
     return {
       setToEdit: function (fileID) {
-        lessonToEdit = $http.get(url + userID);
+        lessonToEdit = $http.get('/uploads/' + userID);
       },
 
       getLessonToEdit: function () {
@@ -22,7 +23,7 @@
       },
 
       get: function (userID) {
-        return $http.get(url + userID);
+        return $http.get('/uploads/' + userID);
       },
 
       create: function (lesson) {

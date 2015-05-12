@@ -4,22 +4,15 @@
       <tr>
         <th>Lesson ID</th>
         <th>Lesson Name</th>
-        <th>File Name</th>
-        <th>Size</th>
-        <th>Type</th>
         <th>Open</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
-      <!-- <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}"> -->
       <tr ng-repeat="file in files track by $index" id="file{{ $index + 1 }}">
         <td>{{ $index + 1 }}</td>
-        <!-- <td>{{ file._id }}</td> -->
-        <td>{{ file.name }}</td>
-        <td>{{ file.file.name }}</td>
-        <td>{{ file.size }}</td>
-        <td>{{ file.file.type }}</td>
+        <td>{{ file.filename }}</td>
+
         <td id="edit-button" ng-click="viewLesson(file)">
           <span class="glyphicon glyphicon-folder-open"></span>
         </td>

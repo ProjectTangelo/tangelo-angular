@@ -10,6 +10,25 @@
         var hasSubmit = false;
         $scope.lesson = {};
 
+        $scope.submitNew = function() {
+            if( hasSubmit ) return;
+            hasSubmit = true;
+
+            // Load the file
+            // $scope.lesson.file = iElem.find('#fileUpload').get(0).files[0];
+            // console.log( angular.element( document.querySelector( '#theLessonForm' ) ).get(0) );
+            // angular.element( document.querySelector( '#theLessonForm' ) ).get(0).serialize();
+            //
+            // $scope.lesson = iElem.find('form').serialize();
+            // console.log($scope.lesson)
+            console.log( $scope.lesson );
+            lessonService.create($scope.lesson);
+
+            console.log('Hey thar')
+            // Redirects when done creating the files.
+            $location.path('/lessons/');
+        }
+
         $scope.submit = function submitLessonForm() {
           if (hasSubmit) return;
           hasSubmit = true;
@@ -48,7 +67,8 @@
       replace: true,
       link: function ($scope, iElem, iAttrs, controller) {
 
-        $http.get('/uploads?{}').success(function (data) {
+        // $http.get('/uploads?{}').success(function (data) {
+        $http.get('/file').success(function (data) {
           $scope.files = data;
           console.log('Scope Files: ' + $scope.files);
         });
@@ -62,7 +82,7 @@
           // console.log('Deleting file: ' + id + ' ID: ' + elemID);
           $(iElem).find('#' + elemID).remove();
           console.log('#' + elemID);
-          $http.delete('/uploads/' + file._id).then(function (res) {
+          $http.delete('/file/' + file._id).then(function (res) {
             // $location.path('/lessons');
           });
         };
@@ -79,8 +99,23 @@
       link: function ($scope, iElem, iAttrs, controller) {
         lessonService.get($routeParams._id).then(function (res) {
           var $e = $(iElem).find('.marked');
-          $scope.lesson = marked(res.data);
-          $e.html($scope.lesson);
+          var contentType = res.headers('content-type');
+
+          switch( contentType.split('/')[0] ) {
+            case "image":
+                // res.data is the image data.
+                // contentType is the mime type of the file.
+                // $e is the div that the content should go into. You can append elements to it.
+                $e.append('<img src="data:' + contentType + ';base64,' + res.data + '" />');
+                break;
+
+            case "text/markdown":
+            case "text":
+            case "application":
+                $scope.lesson = marked(res.data);
+                $e.html($scope.lesson);
+                break;
+          }
         });
       }
     };
