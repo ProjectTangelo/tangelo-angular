@@ -50,8 +50,22 @@
     };
 
     $scope.loadLesson = function () {
-        lessonService.get($scope.currentLesson._id).then(function (data) {
-          $scope.lessonBuffer = $sce.trustAsHtml(marked(data.data));
+        lessonService.get($scope.currentLesson._id).then(function (res) {
+        //   $scope.lessonBuffer = $sce.trustAsHtml(marked(data.data));
+            var contentType = res.headers('content-type');
+
+            switch( contentType.split('/')[0] ) {
+              case "image":
+                  var data = btoa(unescape(encodeURIComponent( res.data )))
+                  $scope.lessonBuffer = $sce.trustAsHtml('<img width="100%" src="http://33.33.33.10/uploads/' + $scope.currentLesson._id + '" />');
+                  break;
+
+              case "text/markdown":
+              case "text":
+              case "application":
+                  $scope.lessonBuffer = $sce.trustAsHtml(marked(res.data));
+                  break;
+            }
         });
     };
 

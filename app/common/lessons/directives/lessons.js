@@ -10,25 +10,6 @@
         var hasSubmit = false;
         $scope.lesson = {};
 
-        $scope.submitNew = function() {
-            if( hasSubmit ) return;
-            hasSubmit = true;
-
-            // Load the file
-            // $scope.lesson.file = iElem.find('#fileUpload').get(0).files[0];
-            // console.log( angular.element( document.querySelector( '#theLessonForm' ) ).get(0) );
-            // angular.element( document.querySelector( '#theLessonForm' ) ).get(0).serialize();
-            //
-            // $scope.lesson = iElem.find('form').serialize();
-            // console.log($scope.lesson)
-            console.log( $scope.lesson );
-            lessonService.create($scope.lesson);
-
-            console.log('Hey thar')
-            // Redirects when done creating the files.
-            $location.path('/lessons/');
-        }
-
         $scope.submit = function submitLessonForm() {
           if (hasSubmit) return;
           hasSubmit = true;
@@ -39,21 +20,14 @@
 
           var reader = new FileReader();
           reader.onloadend = function () {
-            // $scope.lesson.content = window.btoa(reader.result);
             $scope.lesson.content = reader.result;
-            // console.log('Result: ' + $scope.lesson.content);
-            // console.log('Result: ' + window.btoa($scope.lesson.content));
             lessonService.create($scope.lesson);
 
             // Redirects when done creating the files.
             $location.path('/lessons/');
           };
 
-          // reader.readAsBinaryString( $scope.lesson.file );
           reader.readAsBinaryString($scope.lesson.file);
-          // reader.readAsText( $scope.lesson.file );
-          // console.log($scope.lesson.file);
-          // console.log( $scope.lesson );
         }
       }
     }
@@ -103,17 +77,13 @@
 
           switch( contentType.split('/')[0] ) {
             case "image":
-                // res.data is the image data.
-                // contentType is the mime type of the file.
-                // $e is the div that the content should go into. You can append elements to it.
-                $e.append('<img src="data:' + contentType + ';base64,' + res.data + '" />');
+                $e.append('<img src="http://33.33.33.10/uploads/' + $routeParams._id + '" />');
                 break;
 
             case "text/markdown":
             case "text":
             case "application":
-                $scope.lesson = marked(res.data);
-                $e.html($scope.lesson);
+                $e.html(marked(res.data));
                 break;
           }
         });
