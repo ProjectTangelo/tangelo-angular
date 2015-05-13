@@ -80,10 +80,15 @@
                 $e.append('<img src="http://33.33.33.10/uploads/' + $routeParams._id + '" />');
                 break;
 
-            case "text/markdown":
             case "text":
             case "application":
-                $e.html(marked(res.data));
+                // This is just the application type. Used to check if it's markdown or not.
+                var justType = contentType.split(';')[0].split('/')[1];
+
+                if( justType === 'x-markdown' || justType === 'markdown')
+                    $e.html(marked(res.data));
+                else
+                    $e.html('<pre>' + res.data + '</pre>');
                 break;
           }
         });

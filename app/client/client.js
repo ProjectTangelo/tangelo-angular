@@ -60,10 +60,15 @@
                   $scope.lessonBuffer = $sce.trustAsHtml('<img width="100%" src="http://33.33.33.10/uploads/' + $scope.currentLesson._id + '" />');
                   break;
 
-              case "text/markdown":
               case "text":
               case "application":
-                  $scope.lessonBuffer = $sce.trustAsHtml(marked(res.data));
+                  // This is just the application type. Used to check if it's markdown or not.
+                  var justType = contentType.split(';')[0].split('/')[1];
+
+                  if( justType === 'x-markdown' || justType === 'markdown')
+                      $scope.lessonBuffer = $sce.trustAsHtml(marked(res.data));
+                  else
+                  $scope.lessonBuffer = $sce.trustAsHtml('<pre>' + res.data + '</pre>');
                   break;
             }
         });
@@ -71,6 +76,10 @@
 
     lessonService.getAll().then(function (data) {
         $scope.allLessons = data.data;
+        for( var i = 0; i < data.data.length; ++i )
+        {
+            $scope.allLessons[i].name = (i+1).toString();
+        }
         $scope.currentLesson = $scope.allLessons[0];
         $scope.loadLesson();
     })
